@@ -15,14 +15,14 @@ const Header = () => {
             <>
               <button>Products</button>
               <button>Sales</button>
+              <button
+                className="bg-yellow-500 p-2 rounded-md"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
             </>
           )}
-          <button
-            className="bg-yellow-500 p-2 rounded-md"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
         </div>
       </div>
     </div>
