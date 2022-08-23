@@ -3,8 +3,8 @@ import { useState } from "react";
 import { counterActions } from "../store";
 const Counter = () => {
   const [customNumber, setCustomNumber] = useState(0);
-  const counter = useSelector((state) => state.counter);
-  const showCounter = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.counter);
+  const showCounter = useSelector((state) => state.counter.showCounter);
   const dispatch = useDispatch();
   const incrementHandler = () => {
     dispatch(counterActions.increment());
@@ -24,22 +24,21 @@ const Counter = () => {
   };
 
   return (
-    <div className="container bg-slate-800 w-2/5 mx-auto p-4 mt-12 text-white font-semibold text-center flex flex-col space-y-4 text-xl">
-      {showCounter && <div className="w-full">{counter}</div>}
+    <div className="container bg-gray-400 w-2/5 mx-auto p-4 text-center text-white flex flex-col space-y-4 text-xl rounded-md">
+      {showCounter && <div className="w-full font-semibold text-black">{counter}</div>}
       <div className="flex justify-between">
-        <button className="bg-pink-800 px-8" onClick={decrementHandler}>
+        <button className="bg-pink-800 px-8 rounded-md" onClick={decrementHandler}>
           -
         </button>
-        <button className="bg-pink-800 px-8" onClick={addHandler}>
+        <button className="bg-pink-800 px-8 rounded-md" onClick={addHandler}>
           Add {customNumber}
         </button>
-        <button className="bg-pink-800 px-8" onClick={incrementHandler}>
+        <button className="bg-pink-800 px-8 rounded-md" onClick={incrementHandler}>
           +
         </button>
       </div>
       <input
         type="number"
-        defaultValue={0}
         value={customNumber}
         min="0"
         max="9999"
@@ -48,9 +47,9 @@ const Counter = () => {
             ? setCustomNumber(0)
             : setCustomNumber(parseInt(event.target.value))
         }
-        className="w-2/5 self-center text-black"
+        className="w-20 self-center text-black rounded-md p-2"
       />
-      <button className="bg-pink-800 px-8" onClick={toggleHandler}>
+      <button className="bg-pink-800 px-8 w-2/5 self-center rounded-md" onClick={toggleHandler}>
         Toggle Counter
       </button>
     </div>
